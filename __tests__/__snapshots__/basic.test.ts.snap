@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Basic Tests > javascript 1`] = `
+"export function App() {
+  return 'App'
+}
+"
+`;
+
+exports[`Basic Tests > jsx 1`] = `
+"export function App() {
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  )
+}
+"
+`;
+
+exports[`Basic Tests > tsx 1`] = `
+"import * as React from 'react'
+
+export interface TAppProps {
+  children: React.ReactNode
+}
+
+export function App({ children }: TAppProps) {
+  return (
+    <div>
+      <h1>{children}</h1>
+    </div>
+  )
+}
+"
+`;
+
+exports[`Basic Tests > typescript 1`] = `
+"interface TAppProps {
+  name: string
+}
+
+export function App(props: TAppProps) {
+  return props.name
+}
+"
+`;
