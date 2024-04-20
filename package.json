@@ -1,0 +1,33 @@
+{
+  "name": "create-prettier-plugin",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A Boilerplate for Creating Prettier Plugin",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:lib": "rollup -c",
+    "test:lib": "vitest --reporter=verbose",
+    "write": "pnpm build:lib && prettier --write ./fixtures"
+  },
+  "keywords": [
+    "prettier-plugin",
+    "template",
+    "boilerplate"
+  ],
+  "author": "Nurul Akbar Al",
+  "license": "MIT",
+  "peerDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "prettier": "^3.2.5",
+    "rollup": "^4.15.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.0"
+  }
+}
