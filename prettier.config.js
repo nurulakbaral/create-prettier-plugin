@@ -5,8 +5,7 @@ const config = {
   singleQuote: true,
   printWidth: 120,
   tabWidth: 2,
-  jsxSingleQuote: true,
-  plugins: ['./dist/index.js'],
+  jsxSingleQuote: true
 }
 
 export default config

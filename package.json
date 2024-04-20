@@ -7,7 +7,8 @@
   "scripts": {
     "build:lib": "rollup -c",
     "test:lib": "vitest --reporter=verbose",
-    "write": "pnpm build:lib && prettier --write ./fixtures"
+    "write": "pnpm build:lib && prettier --write ./fixtures",
+    "repl": "prettier --plugin dist/index.js *.repl.js --ignore-path .prettierignore"
   },
   "keywords": [
     "prettier-plugin",
