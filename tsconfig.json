@@ -12,5 +12,5 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["src", "@types"]
+  "include": ["src", "@types", "rollup.config.ts"]
 }

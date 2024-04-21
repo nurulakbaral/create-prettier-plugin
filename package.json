@@ -5,7 +5,7 @@
   "description": "A Boilerplate for Creating Prettier Plugin",
   "main": "dist/index.js",
   "scripts": {
-    "build:lib": "rollup -c",
+    "build:lib": "rollup --config=rollup.config.ts --configPlugin=@rollup/plugin-typescript",
     "test:lib": "vitest --reporter=verbose",
     "write": "pnpm build:lib && prettier --write ./fixtures",
     "repl": "prettier --plugin dist/index.js *.repl.js --ignore-path .prettierignore"
