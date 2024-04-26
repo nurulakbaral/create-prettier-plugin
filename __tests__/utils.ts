@@ -4,12 +4,16 @@ import config from '../prettier.config'
 
 const plugin = new URL('../dist/index.js', import.meta.url).href
 
-export async function format(source: string, options: prettier.Options = {}): Promise<string> {
+export async function format(
+  source: string,
+  options: prettier.Options = {},
+  type: 'input' | 'output',
+): Promise<string> {
   try {
     return await prettier.format(source, {
       ...config,
       ...options,
-      plugins: [plugin],
+      plugins: type === 'input' ? [plugin] : [],
     })
   } catch (e) {
     if (e instanceof Error) {
@@ -38,12 +42,20 @@ export function getSourceCode(path: string) {
 }
 
 export async function getFormattedSourceCode(path: string, type: 'js' | 'ts' | 'jsx' | 'tsx') {
-  let actual = await format(getSourceCode(`./fixtures/${path}/input.${type}`), {
-    parser: type === 'ts' || type === 'tsx' ? 'typescript' : 'babel',
-  })
-  let expected = await format(getSourceCode(`./fixtures/${path}/output.${type}`), {
-    parser: type === 'ts' || type === 'tsx' ? 'typescript' : 'babel',
-  })
+  let actual = await format(
+    getSourceCode(`./fixtures/${path}/input.${type}`),
+    {
+      parser: type === 'ts' || type === 'tsx' ? 'typescript' : 'babel',
+    },
+    'input',
+  )
+  let expected = await format(
+    getSourceCode(`./fixtures/${path}/output.${type}`),
+    {
+      parser: type === 'ts' || type === 'tsx' ? 'typescript' : 'babel',
+    },
+    'output',
+  )
 
   return {
     actual,
