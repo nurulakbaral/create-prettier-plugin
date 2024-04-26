@@ -1,4 +1,6 @@
 import type { SupportLanguage, Parser, Printer, SupportOption, Options } from 'prettier'
+import type { AstPath, ParserOptions } from 'prettier'
+import type { JSXElement } from 'babel-types'
 import * as prettierPluginBabel from 'prettier/plugins/babel'
 import * as prettierPluginTypeScript from 'prettier/plugins/typescript'
 import * as prettierPluginEstree from 'prettier/plugins/estree'
@@ -28,7 +30,23 @@ export const printers: Record<'estree', Printer> = {
   estree: {
     ...prettierPluginEstree.printers.estree,
     print: (path, options, print) => {
+      let node = path.getNode() // AST Node.
+      /**
+       * @Notes
+       * This recursive print `prettierPluginEstree.printers.estree.print()` must be called first before Doc manipulation.
+       * If not, will break the print chain (e.g leading/trailing comments).
+       */
       let printed = prettierPluginEstree.printers.estree.print(path, options, print)
+
+      /** @Notes Example doc manipulation */
+      function printJSXElement(path: AstPath, options: ParserOptions, print: Printer['print'], node: JSXElement) {
+        return printed
+      }
+
+      if (node.type === 'JSXElement') {
+        let customPrinted = printJSXElement(path, options, print, node)
+        return printed // Change this return value to `customPrinted` to apply the custom print
+      }
 
       return printed
     },

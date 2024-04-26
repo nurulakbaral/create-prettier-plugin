@@ -11,6 +11,9 @@ devDependencies:
   '@rollup/plugin-typescript':
     specifier: ^11.1.6
     version: 11.1.6(rollup@4.15.0)(tslib@2.6.2)(typescript@5.4.5)
+  '@types/babel-types':
+    specifier: ^7.0.15
+    version: 7.0.15
   '@types/node':
     specifier: ^20.12.7
     version: 20.12.7
@@ -439,6 +442,10 @@ packages:
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
+    dev: true
+
+  /@types/babel-types@7.0.15:
+    resolution: {integrity: sha512-JUgfZHUOMbtjopxiOQaaF+Uovk5wpDqpXR+XLWiOivCWSy1FccO30lvNNpCt8geFwq8VmGT2y9OMkOpA0g5O5g==}
     dev: true
 
   /@types/estree@1.0.5:

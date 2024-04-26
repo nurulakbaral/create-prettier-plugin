@@ -8,7 +8,7 @@
     "build:lib": "rollup --config=rollup.config.ts --configPlugin=@rollup/plugin-typescript",
     "test:lib": "vitest --reporter=verbose",
     "write": "pnpm build:lib && prettier --write ./fixtures",
-    "repl": "prettier --plugin dist/index.js *.repl.js --ignore-path .prettierignore"
+    "repl": "pnpm build:lib && prettier --plugin dist/index.js *.repl.js --ignore-path .prettierignore"
   },
   "keywords": [
     "prettier-plugin",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@types/babel-types": "^7.0.15",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
