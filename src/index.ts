@@ -1,9 +1,10 @@
-import type { SupportLanguage, Parser, Printer, SupportOption, Options } from 'prettier'
+import type { SupportLanguage, Parser, Printer, SupportOption, Options, Doc } from 'prettier'
 import type { AstPath, ParserOptions } from 'prettier'
-import type { JSXElement } from 'babel-types'
 import * as prettierPluginBabel from 'prettier/plugins/babel'
 import * as prettierPluginTypeScript from 'prettier/plugins/typescript'
 import * as prettierPluginEstree from 'prettier/plugins/estree'
+
+type TCallbackPrint = (path: AstPath) => Doc
 
 // https://prettier.io/docs/en/plugins#languages
 export const languages: Partial<SupportLanguage>[] = [
@@ -38,8 +39,9 @@ export const printers: Record<'estree', Printer> = {
        */
       let printed = prettierPluginEstree.printers.estree.print(path, options, print)
 
-      /** @Notes Example doc manipulation */
-      function printJSXElement(path: AstPath, options: ParserOptions, print: Printer['print'], node: JSXElement) {
+      /** @Notes Example Doc manipulation */
+      // Why `node` type is `any`? Because the type is not exported from the plugin.
+      function printJSXElement(path: AstPath, options: ParserOptions, print: TCallbackPrint, node: any) {
         return printed
       }
 
