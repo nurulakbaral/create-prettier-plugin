@@ -1,13 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Basic Tests > javascript 1`] = `
-"export function App() {
-  return 'App'
-}
-"
-`;
-
-exports[`Basic Tests > jsx 1`] = `
+exports[`JSX > jsx 1`] = `
 "export function App() {
   return (
     <div>
@@ -18,7 +11,14 @@ exports[`Basic Tests > jsx 1`] = `
 "
 `;
 
-exports[`Basic Tests > tsx 1`] = `
+exports[`JavaScript > javascript 1`] = `
+"export function App() {
+  return 'App'
+}
+"
+`;
+
+exports[`TSX > tsx 1`] = `
 "import * as React from 'react'
 
 export interface TAppProps {
@@ -35,7 +35,7 @@ export function App({ children }: TAppProps) {
 "
 `;
 
-exports[`Basic Tests > typescript 1`] = `
+exports[`TypeScript > typescript 1`] = `
 "interface TAppProps {
   name: string
 }

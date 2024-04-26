@@ -1,5 +1,5 @@
 import * as prettier from 'prettier'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import config from '../prettier.config'
 
 const plugin = new URL('../dist/index.js', import.meta.url).href
@@ -61,4 +61,20 @@ export async function getFormattedSourceCode(path: string, type: 'js' | 'ts' | '
     actual,
     expected,
   }
+}
+
+export function getFixturesFolderName(path: string): Array<string> {
+  try {
+    let files = readdirSync(path)
+    return files
+  } catch (e) {
+    if (e instanceof Error) {
+      throw e
+    }
+    if (typeof e === 'string') {
+      throw new Error(e)
+    }
+  }
+
+  return []
 }
