@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
+    "allowJs": true,
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "Bundler",
